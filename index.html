@@ -14,6 +14,11 @@
 <meta property="og:site_name" content="CalcHub">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://oleg1488-ui.github.io/calchub/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:url" content="https://oleg1488-ui.github.io/calchub/">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:title" content="CalcHub — бесплатные онлайн-калькуляторы">
+<meta name="twitter:description" content="15 быстрых бесплатных калькуляторов для повседневных задач.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 :root{--bg:#050711;--card:rgba(14,19,38,.78);--text:#f5f7ff;--muted:#8993ad;--purple:#8b5cf6;--cyan:#22d3ee;--pink:#f472b6;--line:rgba(255,255,255,.09)}
@@ -26,6 +31,7 @@ main{max-width:1150px;margin:auto;padding:58px 20px 30px}.hero{text-align:center
 @media(max-width:700px){nav{display:none}main{padding-top:42px}.grid{grid-template-columns:1fr}.card{padding:20px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CalcHub","url":"https://oleg1488-ui.github.io/calchub/","description":"Бесплатные онлайн-калькуляторы для повседневных расчётов."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Нужно ли регистрироваться для использования CalcHub?","acceptedAnswer":{"@type":"Answer","text":"Нет. Основные калькуляторы работают прямо в браузере и не требуют регистрации."}},{"@type":"Question","name":"Работает ли CalcHub на телефоне?","acceptedAnswer":{"@type":"Answer","text":"Да. Интерфейс адаптирован для телефонов, планшетов и компьютеров."}},{"@type":"Question","name":"Сохраняются ли введённые числа?","acceptedAnswer":{"@type":"Answer","text":"Расчёты выполняются локально в браузере. CalcHub не требует отправки введённых значений на сервер для основных калькуляторов."}}]}</script>
 </head>
 <body>
 <div id="splash"><div class="splash-inner"><div class="splash-logo">C</div><div class="splash-kicker">WELCOME TO</div><h1>CalcHub</h1><p>Быстрые онлайн-калькуляторы для повседневных задач.</p><div class="splash-enter">Войти в CalcHub →</div><div class="splash-hint">Нажмите в любом месте экрана</div></div></div>
@@ -61,15 +67,15 @@ function tipCalc(){let b=val('bill'),t=val('tip');document.getElementById('tipRe
 const lengthF={mm:.001,cm:.01,m:1,km:1000,in:.0254,ft:.3048};function lengthCalc(){let v=val('lv'),a=document.getElementById('lf').value,b=document.getElementById('lt').value;document.getElementById('lengthResult').textContent=Number.isFinite(v)?'Результат: '+fmt(v*lengthF[a]/lengthF[b]):'Введите значение'}
 const weightF={g:1,kg:1000,lb:453.59237,oz:28.349523125};function weightCalc(){let v=val('wv'),a=document.getElementById('wf').value,b=document.getElementById('wt').value;document.getElementById('weightResult').textContent=Number.isFinite(v)?'Результат: '+fmt(v*weightF[a]/weightF[b]):'Введите значение'}
 function toC(v,u){return u==='c'?v:u==='f'?(v-32)*5/9:v-273.15}function fromC(v,u){return u==='c'?v:u==='f'?v*9/5+32:v+273.15}function tempCalc(){let v=val('tv'),a=document.getElementById('tf').value,b=document.getElementById('tt').value;document.getElementById('tempResult').textContent=Number.isFinite(v)?'Результат: '+fmt(fromC(toC(v,a),b))+'°':'Введите значение'}
-function timeCalc(){let m=val('minutes');if(!Number.isFinite(m)||m<0)return document.getElementById('timeResult').textContent='Введите минуты';let h=Math.floor(m/60),x=Math.round(m%60);document.getElementById('timeResult').textContent=h+' ч '+x+' мин'}
+function timeCalc(){let m=val('minutes');if(!Number.isFinite(m)||m<0)return document.getElementById('timeResult').textContent='Введите минуты';let total=Math.round(m);let h=Math.floor(total/60),x=total%60;document.getElementById('timeResult').textContent=h+' ч '+x+' мин'}
 function speedCalc(){let s=val('speed');document.getElementById('speedResult').textContent=Number.isFinite(s)?fmt(s)+' км/ч = '+fmt(s/1.609344)+' mph':'Введите значение'}
 function areaCalc(){let a=val('alen'),b=val('awid');document.getElementById('areaResult').textContent=Number.isFinite(a)&&Number.isFinite(b)?'Площадь: '+fmt(a*b)+' м²':'Введите размеры'}
 function volumeCalc(){let a=val('olen'),b=val('owid'),c=val('ohei');document.getElementById('volumeResult').textContent=Number.isFinite(a)&&Number.isFinite(b)&&Number.isFinite(c)?'Объём: '+fmt(a*b*c)+' м³ ('+fmt(a*b*c*1000)+' л)':'Введите размеры'}
-function averageCalc(){let a=document.getElementById('avg').value.split(',').map(Number).filter(Number.isFinite);document.getElementById('avgResult').textContent=a.length?'Среднее: '+fmt(a.reduce((x,y)=>x+y,0)/a.length):'Введите числа через запятую'}
+function averageCalc(){let raw=document.getElementById('avg').value.split(',').map(s=>s.trim());let a=raw.length&&raw.every(s=>s!==''&&Number.isFinite(Number(s)))?raw.map(Number):[];document.getElementById('avgResult').textContent=a.length?'Среднее: '+fmt(a.reduce((x,y)=>x+y,0)/a.length):'Введите числа через запятую'}
 function powerCalc(){let a=val('base'),b=val('power');document.getElementById('powerResult').textContent=Number.isFinite(a)&&Number.isFinite(b)?fmt(a)+'^'+fmt(b)+' = '+fmt(Math.pow(a,b)):'Введите данные'}
 function ratioCalc(){let a=val('part'),b=val('whole');document.getElementById('ratioResult').textContent=Number.isFinite(a)&&Number.isFinite(b)&&b!==0?fmt(a)+' из '+fmt(b)+' = '+fmt(a/b*100)+'%':'Проверьте данные'}
 function loanCalc(){let P=val('loan'),annual=val('rate'),y=val('years');if(!Number.isFinite(P)||!Number.isFinite(annual)||!Number.isFinite(y)||P<0||y<=0)return document.getElementById('loanResult').textContent='Проверьте данные';let r=annual/100/12,n=y*12,pmt=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);document.getElementById('loanResult').textContent='Платёж: '+fmt(pmt)+' / мес • Всего: '+fmt(pmt*n)}
-document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase().trim(),cards=[...document.querySelectorAll('.card')],shown=0;cards.forEach(c=>{let ok=c.dataset.name.includes(q);c.style.display=ok?'block':'none';if(ok)shown++});document.getElementById('none').style.display=shown?'none':'block';document.getElementById('count').textContent=shown+' инструмент'+(shown===1?'':'ов')});
+document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase().trim(),cards=[...document.querySelectorAll('#calculators .card')],shown=0;cards.forEach(c=>{let ok=c.dataset.name.includes(q);c.style.display=ok?'block':'none';if(ok)shown++});document.getElementById('none').style.display=shown?'none':'block';document.getElementById('count').textContent=shown===0?'0 инструментов':shown===1?'1 инструмент':shown<5?shown+' инструмента':shown+' инструментов'});
 (function(){const s=document.getElementById('splash');function enter(){s.classList.add('hidden');sessionStorage.setItem('calchub_entered','1')}if(sessionStorage.getItem('calchub_entered')==='1')s.classList.add('hidden');s.addEventListener('click',enter)})();
 </script>
 </body></html>
