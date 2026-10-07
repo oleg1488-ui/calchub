@@ -56,7 +56,16 @@ main{max-width:1150px;margin:auto;padding:58px 20px 30px}.hero{text-align:center
 <div class="card" data-name="ипотека кредит платеж"><h3>🏠 Кредит</h3><label>Сумма кредита</label><input id="loan" type="number" placeholder="100000"><label>Годовая ставка (%)</label><input id="rate" type="number" placeholder="6"><label>Срок (лет)</label><input id="years" type="number" placeholder="10"><button onclick="loanCalc()">Рассчитать</button><div class="result" id="loanResult">Введите данные</div></div>
 </div><div class="no-results" id="none">Ничего не найдено. Попробуйте другое название.</div></section>
 <section style="margin-top:35px"><div class="section-title"><h2>Частые вопросы</h2></div><div class="grid"><div class="card"><h3>⚡ Всё работает сразу</h3><p style="color:var(--muted);line-height:1.7;font-size:13px">Введите значения и нажмите кнопку. Большинство расчётов выполняются прямо в браузере без регистрации.</p></div><div class="card"><h3>🔎 Удобный поиск</h3><p style="color:var(--muted);line-height:1.7;font-size:13px">Ищите нужный инструмент по названию.</p></div><div class="card"><h3>📱 Для телефона и ПК</h3><p style="color:var(--muted);line-height:1.7;font-size:13px">Интерфейс адаптирован под маленькие экраны и большие мониторы.</p></div></div></section>
-<div class="ad-space">РЕКЛАМНЫЙ БЛОК — здесь позже можно разместить рекламу</div><section id="about" style="text-align:center;padding:25px 0"><h2>CalcHub</h2><p style="color:var(--muted);max-width:650px;margin:auto;line-height:1.7">Быстрые математические и бытовые инструменты в одном месте. Расчёты выполняются локально в вашем браузере.</p></section></main>
+<div class="ad-space" aria-label="Реклама"><script>
+  atOptions = {
+    'key' : '751ac5b0d152259b46bfa311618ff7f0',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://bicea.org/22/751ac5b0d152259b46bfa311618ff7f0"></script></div><section id="about" style="text-align:center;padding:25px 0"><h2>CalcHub</h2><p style="color:var(--muted);max-width:650px;margin:auto;line-height:1.7">Быстрые математические и бытовые инструменты в одном месте. Расчёты выполняются локально в вашем браузере.</p></section></main>
 <footer>© 2026 CalcHub • <a href="privacy.html" style="color:#8993ad">Политика конфиденциальности</a> • <a href="terms.html" style="color:#8993ad">Условия использования</a></footer>
 <script>
 const fmt=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:4}).format(n),val=id=>Number(document.getElementById(id).value);
